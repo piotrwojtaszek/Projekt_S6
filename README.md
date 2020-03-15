@@ -1,6 +1,8 @@
 # Projekt_S6
 Wykorzystam silnik Unity w wersji 2019.3 Będzie to gra z gatunku strategii czasu rzeczywistego RTS.
 Styl gry będzie utrzymany w science fiction. (Coś w rodzaju podbijania nowych planet)
+Grafika będzie utrzymana w stylu low-poly.
+
 Gracz będzie miał do dyspozycji kilka rodzajów surowców naturalnych. 
 Będzie można zamieniać surowce naturalne na energię elektryczną, którą wykorzystamy do obrony lub do rozwoju.
 Mapy będą generowane proceduralnie.
