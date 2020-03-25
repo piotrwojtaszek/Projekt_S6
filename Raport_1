@@ -1,12 +1,19 @@
 Repozytorium jest jeszcze puste ponieważ nie zacząłem jeszcze właśniwego projektu. 
-Zamiast tego szukałem i testowałem różne rozwiązania zapisywania stanu gry, rzeczy którę są zapisywane to : pozycja i stan budynków, ilość zasobów itp. 
-Wybór jest pomiędzy formatem JSON, XML lub zapisywanie do pliku wykorzystując własny własny format. Najbardziej prawdopodobna jest ta ostatnia opcja, ponieważ daje mi największe możliowści konfiguracji.
 
-Nauczyłem się wykorzystywać, modyfikować i ustawiać skrypt wyszukiwania ścieżki do celu, przy równoczesnym omijaniu przeszkód oraz metody optymalizacji, gdy jest dużo obiektów poszukujących ścieżki.
+Zamiast tego szukałem i testowałem różne rozwiązania zapisywania stanu gry, 
+rzeczy którę są zapisywane to : pozycja i stan budynków, ilość zasobów itp. 
+
+Wybór jest pomiędzy formatem JSON, XML lub zapisywanie do pliku wykorzystując własny własny format. 
+Najbardziej prawdopodobna jest ta ostatnia opcja, ponieważ daje mi największe możliowści konfiguracji.
+
+Nauczyłem się wykorzystywać, modyfikować i ustawiać skrypt wyszukiwania ścieżki do celu, p
+rzy równoczesnym omijaniu przeszkód oraz metody optymalizacji, gdy jest dużo obiektów poszukujących ścieżki.
 
 Plany na kolejny tydzień:
 - zacząć właściwy projekt
-- stworzyć możliwość sterowania kamerą, obracanie, oddalanie, przesuwanie kamery gdy kursor zbliży się do krawędzi ekranu, poruszanie kamerą za pomocą strzałek
+- stworzyć możliwość sterowania kamerą, obracanie, oddalanie, 
+przesuwanie kamery gdy kursor zbliży się do krawędzi ekranu, poruszanie kamerą za pomocą strzałek
+
 - stworzyć możliwość dodawania obiektów na scenie za pomocą myszy
 - stworzyć prototyp losowego generowania mapy
 - zastanowić się nad inerfejsem użytkownika(wygląd, funkcjonalności itp)
