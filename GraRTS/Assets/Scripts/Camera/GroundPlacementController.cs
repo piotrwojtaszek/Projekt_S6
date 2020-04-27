@@ -13,7 +13,9 @@ public class GroundPlacementController : MonoBehaviour
     private GameObject currentPlaceableObject;
     private float mouseWheelRotation;
     [SerializeField]
-    private LayerMask collisionMask;
+    private LayerMask collisionRayMask;
+    [SerializeField]
+    private LayerMask collisionColliderMask;
 
     // Update is called once per frame
     void Update()
@@ -22,15 +24,15 @@ public class GroundPlacementController : MonoBehaviour
         if(currentPlaceableObject !=null)
         {
             MoveCurrentPlaceableObjectToMouse();
+        }
+        if (currentPlaceableObject != null)
+        {
             RotateFromMouseWheel();
-            RealseIfClicked();
         }
     }
 
     private void RealseIfClicked()
     {
-       
-
         if (Input.GetMouseButtonDown(0))
         {
             currentPlaceableObject.GetComponent<ObjectControllerBuildMode>().ChangeLayer();
@@ -51,24 +53,22 @@ public class GroundPlacementController : MonoBehaviour
         
         RaycastHit hitInfo;
 
-        if(Physics.Raycast(ray,out hitInfo,Mathf.Infinity,collisionMask))
+        if(Physics.Raycast(ray,out hitInfo,Mathf.Infinity,collisionRayMask))
         {
 
             currentPlaceableObject.transform.position = hitInfo.point;
             currentPlaceableObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
-            Collider[] hitColliders = Physics.OverlapSphere(currentPlaceableObject.transform.position, 1f,collisionMask);
-            if(hitColliders.Length>1)
+            Collider[] hitColliders = Physics.OverlapSphere(currentPlaceableObject.transform.position, 2f,collisionColliderMask);
+            if(hitColliders.Length>0)
             {
                 currentPlaceableObject.GetComponent<ObjectControllerBuildMode>().UnableToPlace();
 
-                foreach (Collider col in hitColliders)
-                {
-                    Debug.Log(col.name);
-                }
             }
             else
             {
+                
                 currentPlaceableObject.GetComponent<ObjectControllerBuildMode>().AbleToPlace();
+                RealseIfClicked();
             }
         }
     }
