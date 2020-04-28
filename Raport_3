@@ -1,0 +1,27 @@
+Poruszanie kamerą: poruszanie odbywa się za pomocą strzałek; klawiszy WSAD lub przy dojechaniu kursorem do krawędzi ekranu.
+Zoom: za pomocą scrolla myszki lub przyciskami R i F;( jest ustawiony maksymalny i minimalny zoom)
+Obrót: po naciśnięciu scrolla myszki lub przyciskami Q i E.
+
+Sworzyłem szablony(ScriptableObjects) oraz skrypty(fukcje wirtualne) które stanowią podstawy każdego budynku.
+Interakcja z budynkami polaga na tym że jeśli kursor znajduje się nad obiektem który posiada klasę "Interactable", wywołuję ją.
+Dzięki temu tworząc nowy interaktywny obiekt musze jedynie w nowym skrypcie odziedziczyć klasę "interactable".
+
+Dodałem podział między trybem budowania a zwykłym. W trybie budowania chcę dodawać budynkom i innym obiektom na których nie można budować
+shader który wizualnie to pokaże graczowi. Nie można stawaić zbyt blisko siebie budynków, gdy można postawić budynek, jego model jest 
+zielony, gdy nie można go dodać, jego meodel jest czerwony.
+
+Aktualnie interfejs zawiera jedynie przycisk którym wywołuje listę budynków do wybudowania oraz ikonę sybmolizującą że jest włączony
+tryb budownia.
+
+Stworzyłem klasę w którym trzymam wszystkie kolory interfejsu, żeby w łatwy sposób zmieniać jego wygląd.
+
+Uczę się tworzenia własnych shaderów za pomocą ShaderGraph. ( chciałbym otrzymać neonowy wygląd obiektów ).
+Jeśli zostałoby mi trochę czasu, chciałbym generować zniekształcenia mapy za pomocą shadera ( aktualnie pomysł na
+proceduralne generowanie mapy polega na losowym rozmieszczeniu zasobów naturalnych itp. bez zniekształeń terenu)
+
+Do kolejnego raportu będę pracować nad:
+- budynkami które będą służyły do zbierania surowców,
+- jednostkami które będą zbierać surowce.
+- jednostkami wojskowymi którymi będzie można poruszać
+- budynkami obronnymi które będą strzelać w wrogie jednostki
+- dodaniem kolejnych elementów interfejsu
