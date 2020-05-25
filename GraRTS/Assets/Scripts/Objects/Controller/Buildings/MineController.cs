@@ -28,6 +28,7 @@ public class MineController : BuildingController
                 }
             }
             GameController.Instance.AddMineralsAmount(0f, 0f, 2f * number);
+            m_currTime = 0f;
         }
         m_currTime += Time.deltaTime;
 
