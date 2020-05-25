@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bade029244b600f40a1649dcf6bec5c7, type: 3}
+  m_Name: Kopalnia
+  m_EditorClassIdentifier: 
+  m_createCost:
+    m_oxygen: 10
+    m_energy: 10
+    m_xandry: 20
+  m_livingCost:
+    m_oxygen: 0
+    m_energy: 1
+    m_xandry: 0
+  m_name: Kopalnia
+  m_maxHealth: 100
+  m_icon: {fileID: 21300000, guid: 3f913893be4802c44a2110a2a55f2bd4, type: 3}
+  m_model3D: {fileID: 100000, guid: e29e5916b5df6014ebc74a7df781bc25, type: 3}
+  m_level: 1
+  m_collectSpeed: 10
+  m_collectAmount: 2
