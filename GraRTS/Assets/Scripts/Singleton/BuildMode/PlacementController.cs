@@ -6,17 +6,17 @@ using UnityEngine;
 public class PlacementController : MonoBehaviour
 {
     [SerializeField]
-    private GameObject placeableObjectPrefab;
+    private GameObject m_placeableObjectPrefab;
 
     [SerializeField]
-    private KeyCode newObjectHotKey = KeyCode.A;
+    private KeyCode m_newObjectHotKey = KeyCode.A;
 
-    private GameObject currentPlaceableObject;
+    private GameObject m_currentPlaceableObject;
 
     private void Update()
     {
         HandleNewObjectHotKey();
-        if(currentPlaceableObject!=null)
+        if(m_currentPlaceableObject!=null)
         {
             MoveCurrentPlaceableObjectToMouse();
             ReleseIfClicked();
@@ -27,7 +27,7 @@ public class PlacementController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            currentPlaceableObject = null;
+            m_currentPlaceableObject = null;
         }
     }
 
@@ -39,22 +39,22 @@ public class PlacementController : MonoBehaviour
 
         if(Physics.Raycast(ray,out hitInfo))
         {
-            currentPlaceableObject.transform.position = hitInfo.point;
-            currentPlaceableObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
+            m_currentPlaceableObject.transform.position = hitInfo.point;
+            m_currentPlaceableObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
         }
     }
 
     private void HandleNewObjectHotKey()
     {
-        if (Input.GetKeyDown(newObjectHotKey))
+        if (Input.GetKeyDown(m_newObjectHotKey))
         {
-            if(currentPlaceableObject==null)
+            if(m_currentPlaceableObject==null)
             {
-                currentPlaceableObject = Instantiate(placeableObjectPrefab);
+                m_currentPlaceableObject = Instantiate(m_placeableObjectPrefab);
             }
             else
             {
-                Destroy(currentPlaceableObject);
+                Destroy(m_currentPlaceableObject);
             }
         }
     }
