@@ -35,7 +35,6 @@ public class GroundPlacementController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            currentPlaceableObject.GetComponent<ObjectControllerBuildMode>().ChangeLayer();
             currentPlaceableObject = null;
 
         }

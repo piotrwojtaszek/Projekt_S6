@@ -23,7 +23,7 @@ MonoBehaviour:
   m_name: Kopalnia
   m_maxHealth: 100
   m_icon: {fileID: 21300000, guid: 3f913893be4802c44a2110a2a55f2bd4, type: 3}
-  m_model3D: {fileID: 100000, guid: e29e5916b5df6014ebc74a7df781bc25, type: 3}
+  m_model3D: {fileID: 5768506888658368729, guid: cf8708c28e27ffe43983ebba7980b14f,
+    type: 3}
   m_level: 1
-  m_collectSpeed: 10
   m_collectAmount: 2
