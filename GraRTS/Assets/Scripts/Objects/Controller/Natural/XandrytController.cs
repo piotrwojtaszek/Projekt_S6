@@ -20,6 +20,25 @@ public class XandrytController : MonoBehaviour
 
     public void CollectXandryt(int amount)
     {
-        m_xandryt -= amount;
+        if (amount >= m_xandryt)
+        {
+            amount = (int)m_xandryt;
+            m_xandryt -= amount;
+            GameController.Instance.AddMineralsAmount(0f, 0f, amount);
+            DestroMe();
+        }
+        else
+        {
+            m_xandryt -= amount;
+            GameController.Instance.AddMineralsAmount(0f, 0f, amount);
+        }
+    }
+
+    void DestroMe()
+    {
+        if (m_xandryt <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

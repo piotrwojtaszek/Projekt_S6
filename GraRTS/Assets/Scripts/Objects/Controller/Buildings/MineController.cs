@@ -5,33 +5,44 @@ using UnityEngine;
 
 public class MineController : BuildingController
 {
-    public override void Interaction() { Debug.Log("Nastąpiła interakcja z :" + m_settings.m_name); }
-    public float m_rate=5f;
+    public float m_rate = 5f;
+    public int m_amount = 2;
     private float m_currTime = 0f;
-    public float m_radius=2f;
-    private void Update()
+    public float m_radius = 2f;
+
+    public override void Awake()
     {
+        base.Awake();
+    }
+
+    public override void Update()
+    {
+        base.Update();
         CheckIfMineralsInRange();
     }
 
     private void CheckIfMineralsInRange()
     {
-        if(m_currTime>=m_rate)
+        if (m_currTime >= m_rate)
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, m_radius);
-            int number = 0;
-            foreach(Collider col in colliders)
+            foreach (Collider col in colliders)
             {
-                if(col.gameObject.GetComponent<XandrytController>()!=null)
+                if (col.gameObject.GetComponent<XandrytController>() != null)
                 {
-                    number++;
+                    col.gameObject.GetComponent<XandrytController>().CollectXandryt(m_amount);
                 }
             }
-            GameController.Instance.AddMineralsAmount(0f, 0f, 2f * number);
+            GameController.Instance.SubstractMineralsAmount(m_settings.m_livingCost.m_oxygen, m_settings.m_livingCost.m_energy, m_settings.m_livingCost.m_xandry);
             m_currTime = 0f;
         }
         m_currTime += Time.deltaTime;
 
+    }
+
+    public override void Interaction()
+    {
+        Debug.Log("Nastąpiła interakcja z :" + m_settings.m_name);
     }
 
     private void OnDrawGizmos()

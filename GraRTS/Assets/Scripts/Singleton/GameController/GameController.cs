@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour
     public Minerals m_minerals;
     [HideInInspector]
     public UIController m_uiController;
+
+    private float m_uiRefreshTime = 0f;
     private void Awake()
     {
         if (Instance == null)
@@ -20,20 +22,33 @@ public class GameController : MonoBehaviour
             Destroy(gameObject);
         }
 
-        m_minerals.m_energy = 0f;
-        m_minerals.m_oxygen = 0f;
-        m_minerals.m_xandry = 0f;
+        m_minerals.m_energy = 100f;
+        m_minerals.m_oxygen = 200f;
+        m_minerals.m_xandry = 100f;
         m_uiController = GetComponent<UIController>();
         m_uiController.m_mineralsUI.UpdateMineralsUI();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        /*if (Input.GetKeyDown(KeyCode.I))
             AddMineralsAmount(1.1f, 2.1f, 2.1f);
         if (Input.GetKeyDown(KeyCode.K))
-            SubstractMineralsAmount(2f, 1.5f, 3f);
-        
+            SubstractMineralsAmount(2f, 1.5f, 3f);*/
+        UpdateMineralsUI();
+
+
+    }
+
+    private void UpdateMineralsUI()
+    {
+        m_uiRefreshTime += Time.deltaTime;
+        if (m_uiRefreshTime >= 3f)
+        {
+            m_uiController.m_mineralsUI.UpdateMineralsUI();
+            m_uiRefreshTime = 0f;
+        }
+
     }
 
     public void AddMineralsAmount(float oxygen, float energy, float xandry)
@@ -41,7 +56,6 @@ public class GameController : MonoBehaviour
         m_minerals.m_oxygen += oxygen;
         m_minerals.m_energy += energy;
         m_minerals.m_xandry += xandry;
-        m_uiController.m_mineralsUI.UpdateMineralsUI();
     }
 
     public void SubstractMineralsAmount(float oxygen, float energy, float xandry)
@@ -49,7 +63,6 @@ public class GameController : MonoBehaviour
         m_minerals.m_oxygen -= oxygen;
         m_minerals.m_energy -= energy;
         m_minerals.m_xandry -= xandry;
-        m_uiController.m_mineralsUI.UpdateMineralsUI();
     }
 
 
