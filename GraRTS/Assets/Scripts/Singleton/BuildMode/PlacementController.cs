@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlacementController : MonoBehaviour
 {
+    public static PlacementController Instance;
+
     [SerializeField]
     private GameObject m_placeableObjectPrefab;
 
@@ -13,10 +15,22 @@ public class PlacementController : MonoBehaviour
 
     private GameObject m_currentPlaceableObject;
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void Update()
     {
         HandleNewObjectHotKey();
-        if(m_currentPlaceableObject!=null)
+        if (m_currentPlaceableObject != null && !GameController.Instance.m_mouseOverUI)
         {
             MoveCurrentPlaceableObjectToMouse();
             ReleseIfClicked();
@@ -37,25 +51,30 @@ public class PlacementController : MonoBehaviour
 
         RaycastHit hitInfo;
 
-        if(Physics.Raycast(ray,out hitInfo))
+        if (Physics.Raycast(ray, out hitInfo))
         {
             m_currentPlaceableObject.transform.position = hitInfo.point;
             m_currentPlaceableObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
         }
     }
 
-    private void HandleNewObjectHotKey()
+    public void HandleNewObjectHotKey()
     {
         if (Input.GetKeyDown(m_newObjectHotKey))
-        {
-            if(m_currentPlaceableObject==null)
-            {
-                m_currentPlaceableObject = Instantiate(m_placeableObjectPrefab);
-            }
-            else
-            {
-                Destroy(m_currentPlaceableObject);
-            }
-        }
+            DestroyTemporatyPrefab();
+
+    }
+
+    public void DestroyTemporatyPrefab()
+    {
+        if (m_currentPlaceableObject != null)
+            Destroy(m_currentPlaceableObject);
+    }
+
+    public void SetNewCurrentPrefab(GameObject prefab)
+    {
+        m_placeableObjectPrefab = prefab;
+        m_currentPlaceableObject = Instantiate(m_placeableObjectPrefab);
+
     }
 }

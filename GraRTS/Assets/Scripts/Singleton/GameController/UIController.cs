@@ -6,6 +6,7 @@ public class UIController : MonoBehaviour
 {
     public MineralsUI m_mineralsUI;
     public static UIController Instance;
+    public AnimationCurve m_curve;
     private void Awake()
     {
         if (Instance == null)
