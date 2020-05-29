@@ -30,10 +30,12 @@ public class MineController : BuildingController
             {
                 if (col.gameObject.GetComponent<XandrytController>() != null)
                 {
-                    col.gameObject.GetComponent<XandrytController>().CollectXandryt(m_amount);
+                    if (GameController.Instance.CheckIfEnoughMinerals(m_settings.m_livingCost.m_oxygen, m_settings.m_livingCost.m_energy, m_settings.m_livingCost.m_xandry + m_amount))
+                        col.gameObject.GetComponent<XandrytController>().CollectXandryt(m_amount);
                 }
             }
-            GameController.Instance.SubstractMineralsAmount(m_settings.m_livingCost.m_oxygen, m_settings.m_livingCost.m_energy, m_settings.m_livingCost.m_xandry);
+            if (GameController.Instance.CheckIfEnoughMinerals(m_settings.m_livingCost.m_oxygen, m_settings.m_livingCost.m_energy, m_settings.m_livingCost.m_xandry))
+                GameController.Instance.SubstractMineralsAmount(m_settings.m_livingCost.m_oxygen, m_settings.m_livingCost.m_energy, m_settings.m_livingCost.m_xandry);
             m_currTime = 0f;
         }
         m_currTime += Time.deltaTime;

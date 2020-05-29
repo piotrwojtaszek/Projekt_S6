@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     public Minerals m_minerals;
     [HideInInspector]
     public UIController m_uiController;
+    public bool m_mouseOverUI=false;
 
     private float m_uiRefreshTime = 0f;
     private void Awake()
@@ -42,13 +43,23 @@ public class GameController : MonoBehaviour
 
     private void UpdateMineralsUI()
     {
+
         m_uiRefreshTime += Time.deltaTime;
-        if (m_uiRefreshTime >= 3f)
+
+
+
+        if (m_uiRefreshTime >= 2f)
         {
             m_uiController.m_mineralsUI.UpdateMineralsUI();
             m_uiRefreshTime = 0f;
         }
+    }
 
+    public bool CheckIfEnoughMinerals(float oxygen, float energy, float xandry)
+    {
+        if (m_minerals.m_oxygen < oxygen || m_minerals.m_energy < energy || m_minerals.m_xandry < xandry)
+            return false;
+        return true;
     }
 
     public void AddMineralsAmount(float oxygen, float energy, float xandry)

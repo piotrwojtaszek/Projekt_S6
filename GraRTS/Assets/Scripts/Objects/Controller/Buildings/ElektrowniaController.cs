@@ -31,8 +31,12 @@ public class ElektrowniaController : BuildingController
         m_currTime += Time.deltaTime;
         if (m_currTime >= m_rate)
         {
-            GameController.Instance.AddMineralsAmount(0f, m_amount, 0f);
-            GameController.Instance.SubstractMineralsAmount(m_settings.m_livingCost.m_oxygen, m_settings.m_livingCost.m_energy, m_settings.m_livingCost.m_xandry + m_amount);
+            if(GameController.Instance.CheckIfEnoughMinerals(m_settings.m_livingCost.m_oxygen, m_settings.m_livingCost.m_energy, m_settings.m_livingCost.m_xandry + m_amount))
+            {
+                GameController.Instance.AddMineralsAmount(0f, m_amount, 0f);
+                GameController.Instance.SubstractMineralsAmount(m_settings.m_livingCost.m_oxygen, m_settings.m_livingCost.m_energy, m_settings.m_livingCost.m_xandry + m_amount);
+            }
+
             m_currTime = 0f;
         }
     }

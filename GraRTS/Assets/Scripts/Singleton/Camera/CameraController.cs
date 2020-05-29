@@ -90,7 +90,7 @@ public class CameraController : MonoBehaviour
 
     void HandleMouseInput()
     {
-        if(Input.mouseScrollDelta.y != 0 )
+        if(Input.mouseScrollDelta.y != 0 && GameController.Instance.m_mouseOverUI==false )
         {
             newZoom += Input.mouseScrollDelta.y * zoomAmount * zoomSensivity;
         }
