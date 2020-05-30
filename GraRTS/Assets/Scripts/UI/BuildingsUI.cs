@@ -37,7 +37,7 @@ public class BuildingsUI : MonoBehaviour
     {
         if (m_animRunning == false)
         {
-            LeanTween.moveLocalY(m_buildButton, 410f, 1f).setEase(UIController.Instance.m_curve).setOnStart(StartAnim).setOnComplete(EndAnim);
+            LeanTween.moveLocalY(m_buildButton, 340f, 1f).setEase(UIController.Instance.m_curve).setOnStart(StartAnim).setOnComplete(EndAnim);
             LeanTween.moveLocalY(m_buildingsContainer, 0f, 1f).setEase(UIController.Instance.m_curve).setOnStart(StartAnim).setOnComplete(EndAnim);
             m_buildMenu = true;
         }

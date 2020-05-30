@@ -12,6 +12,7 @@ public class MineController : BuildingController
 
     public override void Awake()
     {
+        m_radius = m_settings.m_buildColliderSize;
         base.Awake();
     }
 

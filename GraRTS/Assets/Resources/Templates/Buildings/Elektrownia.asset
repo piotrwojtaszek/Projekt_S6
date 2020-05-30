@@ -27,4 +27,4 @@ MonoBehaviour:
     type: 3}
   m_level: 1
   m_collectAmount: 2
-  m_buildColliderSize: 15
+  m_buildColliderSize: 8

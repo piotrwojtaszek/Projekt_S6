@@ -110,7 +110,7 @@ public class PlacementController : MonoBehaviour
 
             m_collisionSphere = Instantiate(spherePrefab, m_currentPlaceableObject.transform) as GameObject;
 
-            m_collisionSphere.transform.localScale = Vector3.one * building.m_settings.m_buildColliderSize;
+            m_collisionSphere.transform.localScale = Vector3.one * building.m_settings.m_buildColliderSize*2f;
         }
     }
 
