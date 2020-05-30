@@ -88,10 +88,10 @@ public class PlacementController : MonoBehaviour
 
     private bool CheckCanPlace(BuildingController building)
     {
-        //TemporaryCollisionSphere();
+        TemporaryCollisionSphere(building);
 
         int layerMask = 1 << 9;
-        Collider[] colliders = Physics.OverlapSphere(building.transform.position, 2f, layerMask);
+        Collider[] colliders = Physics.OverlapSphere(building.transform.position, building.m_settings.m_buildColliderSize, layerMask);
 
         if (colliders.Length > 0 || !GameController.Instance.CheckIfEnoughMinerals(building.m_settings.m_createCost.m_oxygen, building.m_settings.m_createCost.m_energy, building.m_settings.m_createCost.m_xandry))
         {
@@ -102,20 +102,21 @@ public class PlacementController : MonoBehaviour
         return true;
     }
 
-    private void TemporaryCollisionSphere()
+    private void TemporaryCollisionSphere(BuildingController building)
     {
-        GameObject spherePrefab = Resources.Load("General/Useful/CollisionSphere") as GameObject;
+        if(m_collisionSphere==null)
+        {
+            GameObject spherePrefab = Resources.Load("General/Useful/CollisionSphere") as GameObject;
 
-        m_collisionSphere = Instantiate(spherePrefab, m_currentPlaceableObject.transform);
+            m_collisionSphere = Instantiate(spherePrefab, m_currentPlaceableObject.transform) as GameObject;
 
-        m_collisionSphere.transform.localScale = Vector3.one * 3f;
-
+            m_collisionSphere.transform.localScale = Vector3.one * building.m_settings.m_buildColliderSize;
+        }
     }
 
     private void DestoryTemporaryCollisionSphere()
     {
         Destroy(m_collisionSphere);
-
     }
 
 }

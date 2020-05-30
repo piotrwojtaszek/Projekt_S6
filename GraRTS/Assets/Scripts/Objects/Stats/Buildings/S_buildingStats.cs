@@ -6,4 +6,5 @@ using UnityEngine;
 public class S_buildingStats : S_baseStats
 {
     public float m_collectAmount;
+    public float m_buildColliderSize;
 }
