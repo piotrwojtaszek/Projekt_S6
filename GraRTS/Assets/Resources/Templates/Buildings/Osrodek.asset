@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Osrodek
   m_EditorClassIdentifier: 
   m_createCost:
-    m_oxygen: 10
-    m_energy: 0
+    m_oxygen: 0
+    m_energy: 10
     m_xandry: 20
   m_livingCost:
-    m_oxygen: 1
-    m_energy: 0
+    m_oxygen: 0
+    m_energy: 3
     m_xandry: 0
   m_name: Osrodek
   m_maxHealth: 150

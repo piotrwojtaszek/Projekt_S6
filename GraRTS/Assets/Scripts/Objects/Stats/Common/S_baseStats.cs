@@ -9,4 +9,10 @@ public class S_baseStats : S_costStats
     public Sprite m_icon;
     public GameObject m_model3D;
     public int m_level;
+
+    public void CreateCost()
+    {
+        GameController.Instance.SubstractMineralsAmount(m_createCost.m_oxygen, m_createCost.m_energy, m_createCost.m_xandry);
+        GameController.Instance.UIUpdate();
+    }
 }

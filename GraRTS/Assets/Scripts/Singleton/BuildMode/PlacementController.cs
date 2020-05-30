@@ -39,10 +39,17 @@ public class PlacementController : MonoBehaviour
 
     private void ReleseIfClicked()
     {
+        BuildingController building = m_currentPlaceableObject.GetComponent<BuildingController>();
         if (Input.GetMouseButtonDown(0))
         {
-            m_currentPlaceableObject = null;
+            if (GameController.Instance.CheckIfEnoughMinerals(building.m_settings.m_createCost.m_oxygen, building.m_settings.m_createCost.m_energy, building.m_settings.m_createCost.m_xandry))
+            {
+                m_currentPlaceableObject = null;
+                building.m_settings.CreateCost();
+                building = null;
+            }
         }
+
     }
 
     private void MoveCurrentPlaceableObjectToMouse()
@@ -60,7 +67,7 @@ public class PlacementController : MonoBehaviour
 
     public void HandleNewObjectHotKey()
     {
-        if (Input.GetKeyDown(m_newObjectHotKey))
+        if (Input.GetKeyDown(m_newObjectHotKey) || Input.GetKeyDown(KeyCode.Mouse1))
             DestroyTemporatyPrefab();
 
     }

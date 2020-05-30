@@ -23,8 +23,8 @@ public class GameController : MonoBehaviour
             Destroy(gameObject);
         }
 
-        m_minerals.m_energy = 100f;
-        m_minerals.m_oxygen = 200f;
+        m_minerals.m_energy = 40f;
+        m_minerals.m_oxygen = 30f;
         m_minerals.m_xandry = 100f;
         m_uiController = GetComponent<UIController>();
         m_uiController.m_mineralsUI.UpdateMineralsUI();
@@ -53,6 +53,11 @@ public class GameController : MonoBehaviour
             m_uiController.m_mineralsUI.UpdateMineralsUI();
             m_uiRefreshTime = 0f;
         }
+    }
+
+    public void UIUpdate()
+    {
+        m_uiController.m_mineralsUI.UpdateMineralsUI();
     }
 
     public bool CheckIfEnoughMinerals(float oxygen, float energy, float xandry)

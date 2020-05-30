@@ -26,4 +26,5 @@ public class BuildingController : Interactable
             Destroy(gameObject);
         }
     }
+
 }

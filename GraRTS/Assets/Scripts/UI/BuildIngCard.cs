@@ -13,7 +13,9 @@ public class BuildIngCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void OnPointerClick(PointerEventData eventData)
     {
         PlacementController.Instance.DestroyTemporatyPrefab();
-        PlacementController.Instance.SetNewCurrentPrefab(m_building.m_model3D); 
+
+        PlacementController.Instance.SetNewCurrentPrefab(m_building.m_model3D);
+        
     }
 
     public void OnPointerEnter(PointerEventData eventData)
