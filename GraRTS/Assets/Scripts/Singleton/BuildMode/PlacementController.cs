@@ -14,7 +14,7 @@ public class PlacementController : MonoBehaviour
     private KeyCode m_newObjectHotKey = KeyCode.A;
 
     private GameObject m_currentPlaceableObject;
-
+    private GameObject m_collisionSphere = null;
     private void Awake()
     {
         if (Instance == null)
@@ -40,15 +40,17 @@ public class PlacementController : MonoBehaviour
     private void ReleseIfClicked()
     {
         BuildingController building = m_currentPlaceableObject.GetComponent<BuildingController>();
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (GameController.Instance.CheckIfEnoughMinerals(building.m_settings.m_createCost.m_oxygen, building.m_settings.m_createCost.m_energy, building.m_settings.m_createCost.m_xandry))
+        if (CheckCanPlace(building))
+            if (Input.GetMouseButtonDown(0))
             {
+                DestoryTemporaryCollisionSphere();
                 m_currentPlaceableObject = null;
                 building.m_settings.CreateCost();
+                building.ShaderChangeBase();
+                building.ColliderOn();
                 building = null;
+
             }
-        }
 
     }
 
@@ -82,6 +84,38 @@ public class PlacementController : MonoBehaviour
     {
         m_placeableObjectPrefab = prefab;
         m_currentPlaceableObject = Instantiate(m_placeableObjectPrefab);
+    }
+
+    private bool CheckCanPlace(BuildingController building)
+    {
+        //TemporaryCollisionSphere();
+
+        int layerMask = 1 << 9;
+        Collider[] colliders = Physics.OverlapSphere(building.transform.position, 2f, layerMask);
+
+        if (colliders.Length > 0 || !GameController.Instance.CheckIfEnoughMinerals(building.m_settings.m_createCost.m_oxygen, building.m_settings.m_createCost.m_energy, building.m_settings.m_createCost.m_xandry))
+        {
+            building.ShaderChangeBad();
+            return false;
+        }
+        building.ShaderChangeGood();
+        return true;
+    }
+
+    private void TemporaryCollisionSphere()
+    {
+        GameObject spherePrefab = Resources.Load("General/Useful/CollisionSphere") as GameObject;
+
+        m_collisionSphere = Instantiate(spherePrefab, m_currentPlaceableObject.transform);
+
+        m_collisionSphere.transform.localScale = Vector3.one * 3f;
 
     }
+
+    private void DestoryTemporaryCollisionSphere()
+    {
+        Destroy(m_collisionSphere);
+
+    }
+
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7367567051708409397}
   - component: {fileID: 6182978964487875282}
   - component: {fileID: 2190255795896634707}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: OsrodekPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,6 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_settings: {fileID: 11400000, guid: 8309c304931dd5945807e3336731a77d, type: 2}
   m_currHealth: 0
+  m_modelPrefab: {fileID: 709902474144332661}
   m_rate: 4
   m_amount: 5
 --- !u!1001 &709902474144300501
@@ -72,6 +73,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 510435f1271872f4bbed536bbe36fa06, type: 3}
       propertyPath: m_Name
       value: OsrodekModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 510435f1271872f4bbed536bbe36fa06, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 510435f1271872f4bbed536bbe36fa06, type: 3}
       propertyPath: m_LocalPosition.x
@@ -119,6 +124,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 510435f1271872f4bbed536bbe36fa06, type: 3}
+--- !u!1 &709902474144332661 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 510435f1271872f4bbed536bbe36fa06,
+    type: 3}
+  m_PrefabInstance: {fileID: 709902474144300501}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &709902474144425813 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 510435f1271872f4bbed536bbe36fa06,
