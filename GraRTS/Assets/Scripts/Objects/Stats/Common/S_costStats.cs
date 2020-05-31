@@ -6,4 +6,5 @@ public class S_costStats : ScriptableObject
 {
     public Minerals m_createCost;
     public Minerals m_livingCost;
+    public Minerals m_upgradeCost;
 }

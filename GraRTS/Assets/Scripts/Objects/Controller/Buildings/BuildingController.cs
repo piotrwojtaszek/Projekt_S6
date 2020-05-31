@@ -6,6 +6,7 @@ public class BuildingController : Interactable
 {
     public S_buildingStats m_settings;
     public float m_currHealth;
+    public int m_level = 0;
     public GameObject m_modelPrefab;
     //public override void Interaction() { Debug.Log("Nastąpiła interakcja z :"+m_settings.m_name); }
     private Shader m_baseShader;
@@ -25,7 +26,7 @@ public class BuildingController : Interactable
 
     public virtual void DestroyMe()
     {
-        if (m_currHealth<=0)
+        if (m_currHealth <= 0)
         {
             Destroy(gameObject);
         }
@@ -36,7 +37,7 @@ public class BuildingController : Interactable
         Renderer m_renderer = m_modelPrefab.GetComponent<Renderer>();
         Material[] m_materials = m_renderer.materials;
         List<Material> m_materialsList = new List<Material>();
-        foreach(Material mat in m_materials)
+        foreach (Material mat in m_materials)
         {
             mat.shader = Shader.Find("Shader Graphs/Red");
         }
@@ -79,4 +80,21 @@ public class BuildingController : Interactable
         return m_placed;
     }
 
+    private void OnMouseOver()
+    {
+        // może zmienic mu shader na np. żółty
+        Debug.Log("Mysz nad budynkiem");
+    }
+
+    private void OnMouseUpAsButton()
+    {
+        // wyswietlic UI
+        if(GameController.Instance.GetCurrSelectedObject()==null)
+        {
+            GameController.Instance.SetCurrSelectedObject(this.gameObject);
+            GameObject temp = Resources.Load("UI/Buildings/BuildingInfo") as GameObject;
+            Instantiate(temp, UIController.Instance.m_Menu.transform);
+            Debug.Log("Kliknięcie budynku");
+        }
+    }
 }

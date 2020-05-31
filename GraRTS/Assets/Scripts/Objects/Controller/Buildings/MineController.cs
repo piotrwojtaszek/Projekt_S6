@@ -33,10 +33,10 @@ public class MineController : BuildingController
                 if (col.gameObject.GetComponent<XandrytController>() != null)
                 {
                     if (GameController.Instance.CheckIfEnoughMinerals(m_settings.m_livingCost.m_oxygen, m_settings.m_livingCost.m_energy, 0f))
-                        col.gameObject.GetComponent<XandrytController>().CollectXandryt(m_amount);
+                        col.gameObject.GetComponent<XandrytController>().CollectXandryt(m_amount+ (3*m_level));
                 }
             }
-            if (GameController.Instance.CheckIfEnoughMinerals(m_settings.m_livingCost.m_oxygen, m_settings.m_livingCost.m_energy, m_settings.m_livingCost.m_xandry))
+            //if (GameController.Instance.CheckIfEnoughMinerals(m_settings.m_livingCost.m_oxygen, m_settings.m_livingCost.m_energy, m_settings.m_livingCost.m_xandry))
                 GameController.Instance.SubstractMineralsAmount(m_settings.m_livingCost.m_oxygen, m_settings.m_livingCost.m_energy, m_settings.m_livingCost.m_xandry);
             m_currTime = 0f;
         }

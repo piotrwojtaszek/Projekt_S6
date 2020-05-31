@@ -15,16 +15,19 @@ MonoBehaviour:
   m_createCost:
     m_oxygen: 0
     m_energy: 10
-    m_xandry: 20
+    m_xandry: 100
   m_livingCost:
     m_oxygen: 0
-    m_energy: 3
+    m_energy: 8
     m_xandry: 0
+  m_upgradeCost:
+    m_oxygen: 0
+    m_energy: 0
+    m_xandry: 60
   m_name: Osrodek
   m_maxHealth: 150
   m_icon: {fileID: 21300000, guid: 4610cd01a5dbbd1439f1cb0b8be263c9, type: 3}
   m_model3D: {fileID: 3303314951058882052, guid: 20e8c571e1b2d1342aa5eba7e63862b6,
     type: 3}
-  m_level: 1
   m_collectAmount: 2
   m_buildColliderSize: 6

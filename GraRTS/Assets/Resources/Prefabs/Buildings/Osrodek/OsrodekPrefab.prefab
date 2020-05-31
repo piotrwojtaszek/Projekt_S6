@@ -60,9 +60,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_settings: {fileID: 11400000, guid: 8309c304931dd5945807e3336731a77d, type: 2}
   m_currHealth: 0
+  m_level: 1
   m_modelPrefab: {fileID: 709902474144332661}
   m_rate: 4
-  m_amount: 5
+  m_amount: 10
 --- !u!1001 &709902474144300501
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -49,8 +49,8 @@ public class PlacementController : MonoBehaviour
                 building.ShaderChangeBase();
                 building.ColliderOn();
                 building.SetPlaced(true);
+                GameController.Instance.SetCurrBuildingNumber(1);
                 building = null;
-
             }
 
     }
@@ -94,7 +94,9 @@ public class PlacementController : MonoBehaviour
         int layerMask = 1 << 9;
         Collider[] colliders = Physics.OverlapSphere(building.transform.position, building.m_settings.m_buildColliderSize, layerMask);
 
-        if (colliders.Length > 0 || !GameController.Instance.CheckIfEnoughMinerals(building.m_settings.m_createCost.m_oxygen, building.m_settings.m_createCost.m_energy, building.m_settings.m_createCost.m_xandry))
+
+        if (colliders.Length > 0 || !GameController.Instance.CheckIfEnoughMinerals(building.m_settings.m_createCost.m_oxygen, building.m_settings.m_createCost.m_energy, building.m_settings.m_createCost.m_xandry)
+            || GameController.Instance.GetMaxBuildingsNumber() <= GameController.Instance.GetCurrentBuildingsNumber())
         {
             building.ShaderChangeBad();
             return false;
@@ -105,13 +107,13 @@ public class PlacementController : MonoBehaviour
 
     private void TemporaryCollisionSphere(BuildingController building)
     {
-        if(m_collisionSphere==null)
+        if (m_collisionSphere == null)
         {
             GameObject spherePrefab = Resources.Load("General/Useful/CollisionSphere") as GameObject;
 
             m_collisionSphere = Instantiate(spherePrefab, m_currentPlaceableObject.transform) as GameObject;
 
-            m_collisionSphere.transform.localScale = Vector3.one * building.m_settings.m_buildColliderSize*2f;
+            m_collisionSphere.transform.localScale = Vector3.one * building.m_settings.m_buildColliderSize * 2f;
         }
     }
 

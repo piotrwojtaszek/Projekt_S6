@@ -36,7 +36,7 @@ public class XandrytController : MonoBehaviour
 
     void DestroMe()
     {
-        if (m_xandryt <= 0)
+        if ((int)m_xandryt <= 0)
         {
             Destroy(gameObject);
         }

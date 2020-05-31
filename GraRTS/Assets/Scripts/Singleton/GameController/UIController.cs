@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-    public MineralsUI m_mineralsUI;
     public static UIController Instance;
+    public GameObject m_Menu;
+    public MineralsUI m_mineralsUI;
+    public BuildingsDisplay m_buildingsDisplayUI;
+
+    
     public AnimationCurve m_curve;
     private void Awake()
     {
