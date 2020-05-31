@@ -62,8 +62,7 @@ MonoBehaviour:
   m_currHealth: 0
   m_level: 1
   m_modelPrefab: {fileID: 8210132994868039972}
-  m_rate: 4
-  m_amount: 8
+  m_amount: 6
 --- !u!1001 &8210132994868074372
 PrefabInstance:
   m_ObjectHideFlags: 0

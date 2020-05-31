@@ -8,11 +8,11 @@ public class RandomXandrytPlacer : MonoBehaviour
     {
         GameObject prefab = Resources.Load("Prefabs/Naturals/XandrytPrefab") as GameObject;
 
-        for(int i =0; i<100;i+=5)
+        for(int i =-85; i<100;i+=15)
         {
-            for(int j = 0;j<100;j+=5)
+            for(int j = -85;j<100;j+=15)
             {
-                if(Random.Range(-3f,1f)>0f)
+                if(Random.Range(-5f,1f)>0f)
                 {
                     GameObject obj = Instantiate(prefab);
                     obj.transform.position = new Vector3(i, 0f, j);
@@ -20,6 +20,5 @@ public class RandomXandrytPlacer : MonoBehaviour
             }
         }
         Destroy(gameObject);
-
     }
 }

@@ -91,12 +91,29 @@ public class BuildingController : Interactable
     private void OnMouseUpAsButton()
     {
         // wyswietlic UI
-        if(GameController.Instance.GetCurrSelectedObject()==null)
+        if (GameController.Instance.GetCurrSelectedObject() == null)
         {
             GameController.Instance.SetCurrSelectedObject(this.gameObject);
             GameObject temp = Resources.Load("UI/Buildings/BuildingInfo") as GameObject;
             Instantiate(temp, UIController.Instance.m_Menu.transform);
             Debug.Log("Kliknięcie budynku");
         }
+    }
+
+    public virtual void Upgrade()
+    {
+        if (CurrentUpgradeCost())
+        {
+            GameController.Instance.SubstractMineralsAmount(m_settings.m_upgradeCost.m_oxygen * m_level, m_settings.m_upgradeCost.m_energy * m_level, m_settings.m_upgradeCost.m_xandry * m_level);
+            m_level++;
+        }
+    }
+
+    public virtual bool CurrentUpgradeCost()
+    {
+        if (GameController.Instance.CheckIfEnoughMinerals
+    (m_settings.m_upgradeCost.m_oxygen * m_level, m_settings.m_upgradeCost.m_energy * m_level, m_settings.m_upgradeCost.m_xandry * m_level))
+            return true;
+        return false;
     }
 }

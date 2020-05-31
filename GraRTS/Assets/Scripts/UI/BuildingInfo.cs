@@ -18,6 +18,8 @@ public class BuildingInfo : MonoBehaviour
         m_currentObj = GameController.Instance.GetCurrSelectedObject();
         m_building = m_currentObj.GetComponent<BuildingController>();
         m_baseColor = m_upgrade.color;
+        m_Icon.sprite = m_building.m_settings.m_icon;
+        m_name.text = m_building.m_settings.m_name;
     }
 
     // Update is called once per frame
@@ -35,12 +37,7 @@ public class BuildingInfo : MonoBehaviour
     public void Upgarde()
     {
 
-        if (GameController.Instance.CheckIfEnoughMinerals
-            (m_building.m_settings.m_upgradeCost.m_oxygen * m_building.m_level, m_building.m_settings.m_upgradeCost.m_energy * m_building.m_level, m_building.m_settings.m_upgradeCost.m_xandry * m_building.m_level))
-        {
-            GameController.Instance.SubstractMineralsAmount(m_building.m_settings.m_upgradeCost.m_oxygen * m_building.m_level, m_building.m_settings.m_upgradeCost.m_energy * m_building.m_level, m_building.m_settings.m_upgradeCost.m_xandry * m_building.m_level);
-            m_currentObj.GetComponent<BuildingController>().m_level++;
-        }
+        m_building.Upgrade();
     }
 
     void RefreshUI()

@@ -108,6 +108,7 @@ public class GameController : MonoBehaviour
         m_minerals.m_oxygen -= oxygen;
         m_minerals.m_energy -= energy;
         m_minerals.m_xandry -= xandry;
+        m_uiController.m_mineralsUI.UpdateMineralsUI();
     }
 
     public void SetCurrSelectedObject(GameObject obj)

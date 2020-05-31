@@ -25,7 +25,7 @@ public class BazaGlownaController : BuildingController
 
     public override void Collect()
     {
-            GameController.Instance.AddMineralsAmount(m_amount + (3 * m_level), m_amount + (3 * m_level), m_amount + (3 * m_level));
+        GameController.Instance.AddMineralsAmount(m_amount, m_amount, m_amount);
     }
 
     public override void Interaction()
@@ -37,5 +37,16 @@ public class BazaGlownaController : BuildingController
     {
         base.SetPlaced(value);
         UIController.Instance.m_buildingUI.ChangeCards();
+    }
+    public override void Upgrade()
+    {
+        if (GameController.Instance.CheckIfEnoughMinerals
+(m_settings.m_upgradeCost.m_oxygen, m_settings.m_upgradeCost.m_energy, m_settings.m_upgradeCost.m_xandry))
+        {
+            GameController.Instance.SubstractMineralsAmount(m_settings.m_upgradeCost.m_oxygen, m_settings.m_upgradeCost.m_energy, m_settings.m_upgradeCost.m_xandry);
+            m_level++;
+            GameController.Instance.SetMaxBuildingsNumber(5);
+        }
+
     }
 }
