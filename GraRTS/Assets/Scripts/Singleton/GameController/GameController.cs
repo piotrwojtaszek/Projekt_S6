@@ -14,6 +14,8 @@ public class GameController : MonoBehaviour
     private float m_uiRefreshTime = 0f;
     private int m_maxBuildings = 10;
     private int m_currBuildingsNumber = 0;
+    public float m_currTime = 0f;
+    public List<BuildingController> m_buildingsList = new List<BuildingController>();
     private void Awake()
     {
         if (Instance == null)
@@ -39,10 +41,26 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
+        CollectMinerals();
+
         UpdateMineralsUI();
         m_minerals.m_energy = Mathf.Clamp(m_minerals.m_energy, 0f, 1000000000f);
         m_minerals.m_oxygen = Mathf.Clamp(m_minerals.m_oxygen, 0f, 1000000000f);
         m_minerals.m_xandry = Mathf.Clamp(m_minerals.m_xandry, 0f, 1000000000f);
+    }
+
+    private void CollectMinerals()
+    {
+        m_currTime += Time.deltaTime;
+        if (m_currTime >= 2f)
+        {
+            foreach(BuildingController building in m_buildingsList)
+            {
+                building.Collect();
+            }
+
+            m_currTime = 0f;
+        }
     }
 
     private void UpdateMineralsUI()
@@ -131,9 +149,17 @@ public class GameController : MonoBehaviour
     /// Arg >0 znaczy dadaj, Arg <0 znaczy odjac
     /// </summary>
     /// <param name="value"></param>
-    public void SetCurrBuildingNumber(int value)
+    public void SetCurrBuildingNumber(int value, BuildingController building)
     {
         m_currBuildingsNumber += value;
         UIController.Instance.m_buildingsDisplayUI.Refresh();
+        if(value>0)
+        {
+            m_buildingsList.Add(building);
+        }
+        else
+        {
+            m_buildingsList.Remove(building);
+        }
     }
 }

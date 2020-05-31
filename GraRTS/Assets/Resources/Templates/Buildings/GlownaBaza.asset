@@ -24,9 +24,10 @@ MonoBehaviour:
     m_oxygen: 0
     m_energy: 0
     m_xandry: 0
-  m_name: 
+  m_name: Kwatera Glowna
   m_maxHealth: 1000
-  m_icon: {fileID: 0}
-  m_model3D: {fileID: 0}
-  m_collectAmount: 0
-  m_buildColliderSize: 0
+  m_icon: {fileID: 21300000, guid: ef876abcb7c0bc64abfb9ae127facb50, type: 3}
+  m_model3D: {fileID: 881279136080078524, guid: 40d465decf1415a42b3456d030dcba04,
+    type: 3}
+  m_collectAmount: 1
+  m_buildColliderSize: 10

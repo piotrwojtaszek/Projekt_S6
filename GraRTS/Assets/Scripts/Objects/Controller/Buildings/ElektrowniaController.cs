@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class ElektrowniaController : BuildingController
 {
-    public float m_rate = 5f;
     public int m_amount = 2;
-    private float m_currTime = 0f;
-    // Start is called before the first frame update
 
     public override void Awake()
     {
@@ -23,23 +20,19 @@ public class ElektrowniaController : BuildingController
     public override void Update()
     {
         base.Update();
-        if (GetPlaced())
-            CreateEnergy();
     }
 
-    void CreateEnergy()
+    public override void Collect()
     {
-        m_currTime += Time.deltaTime;
-        if (m_currTime >= m_rate)
+
+        if (GameController.Instance.CheckIfEnoughMinerals(m_settings.m_livingCost.m_oxygen, m_settings.m_livingCost.m_energy, m_settings.m_livingCost.m_xandry + m_amount))
         {
-            if(GameController.Instance.CheckIfEnoughMinerals(m_settings.m_livingCost.m_oxygen, m_settings.m_livingCost.m_energy, m_settings.m_livingCost.m_xandry + m_amount))
-            {
-                GameController.Instance.AddMineralsAmount(0f, m_amount+(3*m_level), 0f);
-                
-            }
-            GameController.Instance.SubstractMineralsAmount(m_settings.m_livingCost.m_oxygen, m_settings.m_livingCost.m_energy, m_settings.m_livingCost.m_xandry + m_amount);
-            m_currTime = 0f;
+            GameController.Instance.AddMineralsAmount(0f, m_amount + (3 * m_level), 0f);
+
         }
+        GameController.Instance.SubstractMineralsAmount(m_settings.m_livingCost.m_oxygen, m_settings.m_livingCost.m_energy, m_settings.m_livingCost.m_xandry + m_amount);
+
+
     }
 
     public override void Interaction()

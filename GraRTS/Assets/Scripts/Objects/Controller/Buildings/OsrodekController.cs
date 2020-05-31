@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class OsrodekController : BuildingController
 {
-    public float m_rate = 5f;
     public int m_amount = 2;
-    private float m_currTime = 0f;
 
     public override void Awake()
     {
@@ -22,23 +20,18 @@ public class OsrodekController : BuildingController
     public override void Update()
     {
         base.Update();
-        if (GetPlaced())
-            CreateOxygen();
     }
 
-    public void CreateOxygen()
+    public override void Collect()
     {
-        m_currTime += Time.deltaTime;
-        if (m_currTime >= m_rate)
+
+        if (GameController.Instance.CheckIfEnoughMinerals(m_settings.m_livingCost.m_oxygen, m_settings.m_livingCost.m_energy, m_settings.m_livingCost.m_xandry + m_amount))
         {
-            if(GameController.Instance.CheckIfEnoughMinerals(m_settings.m_livingCost.m_oxygen, m_settings.m_livingCost.m_energy, m_settings.m_livingCost.m_xandry + m_amount))
-            {
-                GameController.Instance.AddMineralsAmount(m_amount+(3* m_level), 0f, 0f);
-                
-            }
-            GameController.Instance.SubstractMineralsAmount(m_settings.m_livingCost.m_oxygen, m_settings.m_livingCost.m_energy, m_settings.m_livingCost.m_xandry + m_amount);
-            m_currTime = 0f;
+            GameController.Instance.AddMineralsAmount(m_amount + (3 * m_level), 0f, 0f);
+
         }
+        GameController.Instance.SubstractMineralsAmount(m_settings.m_livingCost.m_oxygen, m_settings.m_livingCost.m_energy, m_settings.m_livingCost.m_xandry + m_amount);
+
     }
 
 

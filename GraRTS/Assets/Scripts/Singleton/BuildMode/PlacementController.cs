@@ -49,7 +49,7 @@ public class PlacementController : MonoBehaviour
                 building.ShaderChangeBase();
                 building.ColliderOn();
                 building.SetPlaced(true);
-                GameController.Instance.SetCurrBuildingNumber(1);
+                GameController.Instance.SetCurrBuildingNumber(1,building);
                 building = null;
             }
 

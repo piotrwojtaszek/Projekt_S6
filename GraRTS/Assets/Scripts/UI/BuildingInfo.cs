@@ -10,13 +10,13 @@ public class BuildingInfo : MonoBehaviour
     public TextMeshProUGUI m_name;
     public TextMeshProUGUI m_level;
     public Image m_upgrade;
-    private BuildingController building;
+    private BuildingController m_building;
     Color m_baseColor;
     // Start is called before the first frame update
     void Start()
     {
         m_currentObj = GameController.Instance.GetCurrSelectedObject();
-        building = m_currentObj.GetComponent<BuildingController>();
+        m_building = m_currentObj.GetComponent<BuildingController>();
         m_baseColor = m_upgrade.color;
     }
 
@@ -36,9 +36,9 @@ public class BuildingInfo : MonoBehaviour
     {
 
         if (GameController.Instance.CheckIfEnoughMinerals
-            (building.m_settings.m_upgradeCost.m_oxygen * building.m_level, building.m_settings.m_upgradeCost.m_energy * building.m_level, building.m_settings.m_upgradeCost.m_xandry * building.m_level))
+            (m_building.m_settings.m_upgradeCost.m_oxygen * m_building.m_level, m_building.m_settings.m_upgradeCost.m_energy * m_building.m_level, m_building.m_settings.m_upgradeCost.m_xandry * m_building.m_level))
         {
-            GameController.Instance.SubstractMineralsAmount(building.m_settings.m_upgradeCost.m_oxygen * building.m_level, building.m_settings.m_upgradeCost.m_energy * building.m_level, building.m_settings.m_upgradeCost.m_xandry * building.m_level);
+            GameController.Instance.SubstractMineralsAmount(m_building.m_settings.m_upgradeCost.m_oxygen * m_building.m_level, m_building.m_settings.m_upgradeCost.m_energy * m_building.m_level, m_building.m_settings.m_upgradeCost.m_xandry * m_building.m_level);
             m_currentObj.GetComponent<BuildingController>().m_level++;
         }
     }
@@ -46,7 +46,7 @@ public class BuildingInfo : MonoBehaviour
     void RefreshUI()
     {
         if (!GameController.Instance.CheckIfEnoughMinerals
-            (building.m_settings.m_upgradeCost.m_oxygen * building.m_level, building.m_settings.m_upgradeCost.m_energy * building.m_level, building.m_settings.m_upgradeCost.m_xandry * building.m_level))
+            (m_building.m_settings.m_upgradeCost.m_oxygen * m_building.m_level, m_building.m_settings.m_upgradeCost.m_energy * m_building.m_level, m_building.m_settings.m_upgradeCost.m_xandry * m_building.m_level))
         {
             m_upgrade.color = Color.black;
         }
@@ -59,7 +59,7 @@ public class BuildingInfo : MonoBehaviour
 
     public void DestroyBuilding()
     {
-        GameController.Instance.SetCurrBuildingNumber(-1);
+        GameController.Instance.SetCurrBuildingNumber(-1,m_building);
         Destroy(m_currentObj.gameObject);
         CloseUI();
     }

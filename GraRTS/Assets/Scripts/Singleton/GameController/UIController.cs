@@ -7,6 +7,7 @@ public class UIController : MonoBehaviour
     public static UIController Instance;
     public GameObject m_Menu;
     public MineralsUI m_mineralsUI;
+    public BuildingsUI m_buildingUI;
     public BuildingsDisplay m_buildingsDisplayUI;
 
     

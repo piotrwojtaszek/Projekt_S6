@@ -24,6 +24,8 @@ public class BuildingController : Interactable
         DestroyMe();
     }
 
+    public virtual void Collect() { }
+
     public virtual void DestroyMe()
     {
         if (m_currHealth <= 0)
@@ -70,7 +72,7 @@ public class BuildingController : Interactable
         GetComponent<Collider>().enabled = true;
     }
 
-    public void SetPlaced(bool value)
+    public virtual void SetPlaced(bool value)
     {
         m_placed = value;
     }

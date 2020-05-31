@@ -17,8 +17,8 @@ MonoBehaviour:
     m_energy: 0
     m_xandry: 30
   m_livingCost:
-    m_oxygen: 1
-    m_energy: 3
+    m_oxygen: 2
+    m_energy: 4
     m_xandry: 0
   m_upgradeCost:
     m_oxygen: 0
@@ -29,5 +29,4 @@ MonoBehaviour:
   m_icon: {fileID: 21300000, guid: 3f913893be4802c44a2110a2a55f2bd4, type: 3}
   m_model3D: {fileID: 5768506888658368729, guid: cf8708c28e27ffe43983ebba7980b14f,
     type: 3}
-  m_collectAmount: 2
   m_buildColliderSize: 10

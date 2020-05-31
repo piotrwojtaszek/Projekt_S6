@@ -17,12 +17,13 @@ public class BuildingsUI : MonoBehaviour
     private void Awake()
     {
         m_buildingCard = Resources.Load("UI/Build/BuildingDisplayCard") as GameObject;
-
-        foreach (S_buildingStats building in m_listOfBuildings)
+        foreach (Transform tra in m_content.transform)
         {
-            GameObject m_cardPrefab = Instantiate(m_buildingCard, m_content.transform);
-            m_cardPrefab.GetComponent<BuildIngCard>().SetCard(building);
+            Destroy(tra.gameObject);
         }
+        GameObject m_cardPrefab = Instantiate(m_buildingCard, m_content.transform);
+        m_cardPrefab.GetComponent<BuildIngCard>().SetCard(m_listOfBuildings[0]);
+
     }
 
     public void SwitchBuildMenu()
@@ -61,6 +62,20 @@ public class BuildingsUI : MonoBehaviour
     void StartAnim()
     {
         m_animRunning = true;
+    }
+
+    public void ChangeCards()
+    {
+        foreach (Transform child in m_content.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+        for (int i = 1; i < m_listOfBuildings.Length; i++)
+        {
+            GameObject m_cardPrefab = Instantiate(m_buildingCard, m_content.transform);
+            m_cardPrefab.GetComponent<BuildIngCard>().SetCard(m_listOfBuildings[i]);
+        }
+
     }
 
 }
