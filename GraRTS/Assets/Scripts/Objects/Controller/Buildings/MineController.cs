@@ -19,7 +19,8 @@ public class MineController : BuildingController
     public override void Update()
     {
         base.Update();
-        CheckIfMineralsInRange();
+        if (GetPlaced())
+            CheckIfMineralsInRange();
     }
 
     private void CheckIfMineralsInRange()

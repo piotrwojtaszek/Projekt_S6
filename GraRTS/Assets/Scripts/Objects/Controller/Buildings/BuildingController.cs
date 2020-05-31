@@ -9,6 +9,7 @@ public class BuildingController : Interactable
     public GameObject m_modelPrefab;
     //public override void Interaction() { Debug.Log("Nastąpiła interakcja z :"+m_settings.m_name); }
     private Shader m_baseShader;
+    private bool m_placed = false;
 
     public virtual void Awake()
     {
@@ -68,6 +69,14 @@ public class BuildingController : Interactable
         GetComponent<Collider>().enabled = true;
     }
 
+    public void SetPlaced(bool value)
+    {
+        m_placed = value;
+    }
 
+    public bool GetPlaced()
+    {
+        return m_placed;
+    }
 
 }

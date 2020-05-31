@@ -23,7 +23,8 @@ public class ElektrowniaController : BuildingController
     public override void Update()
     {
         base.Update();
-        CreateEnergy();
+        if (GetPlaced())
+            CreateEnergy();
     }
 
     void CreateEnergy()

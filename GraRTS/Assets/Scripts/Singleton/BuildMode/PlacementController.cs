@@ -48,6 +48,7 @@ public class PlacementController : MonoBehaviour
                 building.m_settings.CreateCost();
                 building.ShaderChangeBase();
                 building.ColliderOn();
+                building.SetPlaced(true);
                 building = null;
 
             }

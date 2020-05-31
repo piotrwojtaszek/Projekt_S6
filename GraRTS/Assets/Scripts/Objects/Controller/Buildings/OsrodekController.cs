@@ -22,7 +22,8 @@ public class OsrodekController : BuildingController
     public override void Update()
     {
         base.Update();
-        CreateOxygen();
+        if (GetPlaced())
+            CreateOxygen();
     }
 
     public void CreateOxygen()
