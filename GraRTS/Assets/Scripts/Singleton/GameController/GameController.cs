@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
     private int m_currBuildingsNumber = 0;
     public float m_currTime = 0f;
     public List<BuildingController> m_buildingsList = new List<BuildingController>();
+    public GameObject m_menuUI;
     private void Awake()
     {
         if (Instance == null)
@@ -47,6 +48,11 @@ public class GameController : MonoBehaviour
         m_minerals.m_energy = Mathf.Clamp(m_minerals.m_energy, 0f, 1000000000f);
         m_minerals.m_oxygen = Mathf.Clamp(m_minerals.m_oxygen, 0f, 1000000000f);
         m_minerals.m_xandry = Mathf.Clamp(m_minerals.m_xandry, 0f, 1000000000f);
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            m_menuUI.SetActive(!m_menuUI.activeSelf);
+        }
     }
 
     private void CollectMinerals()

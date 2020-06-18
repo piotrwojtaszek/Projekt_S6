@@ -11,6 +11,8 @@ public class Negative : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
     TextMeshProUGUI m_text;
     public Color m_negativColor;
     public Color m_baseColor;
+    public Color m_negativColorText;
+    public Color m_baseColorText;
     public float m_sizeOnHover;
     public float m_time;
     Vector3 m_baseScale;
@@ -25,14 +27,14 @@ public class Negative : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
     public void OnPointerEnter(PointerEventData eventData)
     {
         m_image.color = m_negativColor;
-        m_text.color = m_baseColor;
+        m_text.color = m_negativColorText;
         LeanTween.scale(gameObject, m_baseScale * m_sizeOnHover, m_time).setEase(m_animationCurve);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         m_image.color = m_baseColor;
-        m_text.color = m_negativColor;
+        m_text.color = m_baseColorText;
         LeanTween.scale(gameObject, m_baseScale, m_time).setEase(m_animationCurve);
     }
 }

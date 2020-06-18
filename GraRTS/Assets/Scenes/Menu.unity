@@ -515,7 +515,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_negativColor: {r: 1, g: 1, b: 1, a: 1}
   m_baseColor: {r: 0, g: 0, b: 0, a: 1}
-  m_sizeOnHover: 0.8
+  m_negativColorText: {r: 0, g: 0, b: 0, a: 1}
+  m_baseColorText: {r: 1, g: 1, b: 1, a: 1}
+  m_sizeOnHover: 0.95
   m_time: 0.5
   m_animationCurve:
     serializedVersion: 2
@@ -750,7 +752,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_negativColor: {r: 0, g: 0, b: 0, a: 1}
   m_baseColor: {r: 1, g: 1, b: 1, a: 1}
-  m_sizeOnHover: 0.8
+  m_negativColorText: {r: 1, g: 1, b: 1, a: 1}
+  m_baseColorText: {r: 0, g: 0, b: 0, a: 1}
+  m_sizeOnHover: 0.95
   m_time: 0.5
   m_animationCurve:
     serializedVersion: 2
