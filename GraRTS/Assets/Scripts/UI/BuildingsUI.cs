@@ -38,8 +38,9 @@ public class BuildingsUI : MonoBehaviour
     {
         if (m_animRunning == false)
         {
-            LeanTween.moveLocalY(m_buildButton, 340f, 1f).setEase(UIController.Instance.m_curve).setOnStart(StartAnim).setOnComplete(EndAnim);
+            LeanTween.moveLocalY(m_buildButton, 310f, 1f).setEase(UIController.Instance.m_curve).setOnStart(StartAnim).setOnComplete(EndAnim);
             LeanTween.moveLocalY(m_buildingsContainer, 0f, 1f).setEase(UIController.Instance.m_curve).setOnStart(StartAnim).setOnComplete(EndAnim);
+            m_buildButton.GetComponentInChildren<BuildButton>().ArrowDown();
             m_buildMenu = true;
         }
     }
@@ -50,6 +51,7 @@ public class BuildingsUI : MonoBehaviour
         {
             LeanTween.moveLocalY(m_buildButton, 0f, 1f).setEase(UIController.Instance.m_curve).setOnStart(StartAnim).setOnComplete(EndAnim);
             LeanTween.moveLocalY(m_buildingsContainer, -410f, 1f).setEase(UIController.Instance.m_curve).setOnStart(StartAnim).setOnComplete(EndAnim);
+            m_buildButton.GetComponentInChildren<BuildButton>().ArrowUp();
             m_buildMenu = false;
         }
     }

@@ -18,7 +18,7 @@ MonoBehaviour:
     m_xandry: 100
   m_livingCost:
     m_oxygen: 0
-    m_energy: 5
+    m_energy: 6
     m_xandry: 0
   m_upgradeCost:
     m_oxygen: 0
