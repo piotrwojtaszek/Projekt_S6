@@ -16,7 +16,11 @@ public class RandomXandrytPlacer : MonoBehaviour
                 {
                     GameObject obj = Instantiate(prefab);
                     obj.transform.position = new Vector3(i, 0f, j);
-                }    
+                }
+                else
+                {
+                    GetComponent<RandomDetailsPlacer>().WylosujDetale(new Vector3(i, 0f, j));
+                }
             }
         }
         Destroy(gameObject);

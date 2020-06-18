@@ -91,7 +91,7 @@ public class GameController : MonoBehaviour
     /// <returns></returns>
     public bool CheckIfEnoughMinerals(float oxygen, float energy, float xandry)
     {
-        if (m_minerals.m_oxygen - oxygen < 0f || m_minerals.m_energy - energy < 0f || m_minerals.m_xandry - xandry < 0f)
+        if (m_minerals.m_oxygen - oxygen <= 0f || m_minerals.m_energy - energy <= 0f || m_minerals.m_xandry - xandry <= 0f)
             return false;
         return true;
     }
